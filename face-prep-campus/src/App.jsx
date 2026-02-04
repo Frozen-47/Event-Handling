@@ -3,7 +3,7 @@ import Hero from './components/Hero';
 import Navbar from './components/Navbar';
 import EventCard from './components/EventCard';
 import { categories, events } from './data/eventsData';
-import './index.css'; // Make sure to move your style.css content here
+import './index.css'; 
 
 const App = () => {
   const [activeTab, setActiveTab] = useState('communication');
@@ -23,12 +23,14 @@ const App = () => {
 
         <div className="container">
           <div className="tab-content">
-            <div className={`tab-pane active`}> {/* We handle visibility via React, so always active class here */}
+            {/* Added key to force animation re-render on tab change */}
+            <div key={activeTab} className="tab-pane active">
               
-              <div className={`category-header ${currentCategory.bgClass}`}>
-                <h3>{currentCategory.label} Activities</h3>
-                <p>{currentCategory.description}</p>
-                <p className="coordinator">Event Coordinator: {currentCategory.coordinator}</p>
+              {/* FIXED: Added ?. check to prevent crashes */}
+              <div className={`category-header ${currentCategory?.bgClass || 'comm-bg'}`}>
+                <h3>{currentCategory?.label} Activities</h3>
+                <p>{currentCategory?.description}</p>
+                <p className="coordinator">Event Coordinator: {currentCategory?.coordinator}</p>
               </div>
 
               <div className="events-grid">

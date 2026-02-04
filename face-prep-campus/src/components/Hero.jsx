@@ -19,7 +19,7 @@ const Hero = () => {
   }, []);
 
   function calculateTimeLeft() {
-    // UPDATED DATE: February 11, 2026
+    // TARGET DATE: February 11, 2026
     const difference = +new Date("2026-02-11T09:00:00") - +new Date();
     let timeLeft = {};
 
@@ -108,8 +108,7 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* UPDATED DATE TEXT */}
-        <p style={{ fontSize: '1.1rem', margin: '20px 0', opacity: 0.8 }}>
+        <p style={{ fontSize: '1.1rem', margin: '20px 0', opacity: 0.8, color: '#e0e0e0' }}>
           <i className="fas fa-calendar-alt"></i> 11th February 2026
         </p>
         
