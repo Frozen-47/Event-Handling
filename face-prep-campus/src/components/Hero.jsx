@@ -52,7 +52,7 @@ const Hero = () => {
 
   return (
     <section className="hero">
-      {/* Background Video - Place your video file in the public folder */}
+      {/* Background Video */}
       <video 
         autoPlay 
         loop 
@@ -63,47 +63,73 @@ const Hero = () => {
         <source src="/bg-video.mp4" type="video/mp4" />
       </video>
 
-      {/* Overlays */}
       <div className="video-overlay"></div>
       <div className="hero-grid-overlay"></div>
 
       {/* Logos */}
-      <a href="https://www.bcas.ac.in/" target="_blank" rel="noopener noreferrer" className="logo-corner logo-left">
-        <img src="/bcas.png" alt="College Logo" />
+      <a 
+        href="https://www.bcas.ac.in/" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="logo-corner logo-left" 
+        style={{ height: '55px', width: 'auto' }} 
+      >
+        <img src="/bcas.png" alt="College Logo" style={{ height: '100%', width: 'auto' }} />
       </a>
-      <a href="https://faceprepcampus.com/" target="_blank" rel="noopener noreferrer" className="logo-corner logo-right" style={{ height: '55px', top: '35px' }}>
+
+      <a 
+        href="https://faceprepcampus.com/" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="logo-corner logo-right" 
+        style={{ height: '55px', top: '35px' }}
+      >
         <img src="https://faceprepcampus.com/wp-content/uploads/2024/11/faceprepcampus-logo.svg" alt="FACE Prep" />
       </a>
 
-      <div className="hero-content">
-        <div className="badge-container">
-          <span className="event-badge">🚀 Intra Campus Event 2026</span>
-        </div>
+      {/* --- NEW SPLIT LAYOUT CONTAINER --- */}
+      <div className="hero-main-layout">
         
-        <h1>FACE PREP CAMPUS</h1>
-        <p>Bharathidasan College of Arts and Science (Autonomous)</p>
-        
-        <div className="typing-container">
-          <span className="typing-text">{typingText}</span>
-          <span className="cursor">|</span>
+        {/* Left Column: 30% for Image */}
+        <div className="hero-left-col">
+           {/* Replace '/faceprep.png' with your desired side image */}
+           <img src="/faceprep.png" alt="Event Feature" className="hero-feature-img" /> 
         </div>
 
-        <div className="countdown-container">
-          {Object.entries(timeLeft).map(([label, value]) => (
-            <div key={label} className="time-box">
-              <span className="time-value">{value || '0'}</span>
-              <span className="time-label">{label}</span>
+        {/* Right Column: 70% for Content */}
+        <div className="hero-right-col">
+          <div className="hero-content">
+            <div className="badge-container">
+              <span className="event-badge">🚀 Intra Campus Event 2026</span>
             </div>
-          ))}
+            
+            <h1>FACE PREP CAMPUS</h1>
+            <p>Bharathidasan College of Arts and Science (Autonomous)</p>
+            
+            <div className="typing-container">
+              <span className="typing-text">{typingText}</span>
+              <span className="cursor">|</span>
+            </div>
+
+            <div className="countdown-container">
+              {Object.entries(timeLeft).map(([label, value]) => (
+                <div key={label} className="time-box">
+                  <span className="time-value">{value || '0'}</span>
+                  <span className="time-label">{label}</span>
+                </div>
+              ))}
+            </div>
+
+            <p style={{ fontSize: '1.1rem', margin: '20px 0', opacity: 0.9 }}>
+              <i className="fas fa-calendar-alt"></i> 11th February 2026
+            </p>
+            
+            <a href="#events-section" className="cta">
+              Explore Events <i className="fas fa-arrow-down" style={{ marginLeft: '8px' }}></i>
+            </a>
+          </div>
         </div>
 
-        <p style={{ fontSize: '1.1rem', margin: '20px 0', opacity: 0.9 }}>
-          <i className="fas fa-calendar-alt"></i> 11th February 2026
-        </p>
-        
-        <a href="#events-section" className="cta">
-          Explore Events <i className="fas fa-arrow-down" style={{ marginLeft: '8px' }}></i>
-        </a>
       </div>
 
       <div className="scroll-indicator">
