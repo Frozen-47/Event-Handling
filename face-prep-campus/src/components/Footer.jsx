@@ -28,10 +28,10 @@ const Footer = () => {
           <div className="footer-social">
             <h3>Connect With Us</h3>
             <div className="social-icons">
-              <a href="#"><i className="fab fa-instagram"></i></a>
-              <a href="#"><i className="fab fa-linkedin-in"></i></a>
-              <a href="#"><i className="fab fa-youtube"></i></a>
-              <a href="#"><i className="fas fa-envelope"></i></a>
+              <a href="https://www.instagram.com/fpc_at_bharathidasan/"><i className="fab fa-instagram"></i></a>
+              <a href="https://www.linkedin.com/company/face-prep-campus"><i className="fab fa-linkedin-in"></i></a>
+              <a href="https://www.youtube.com/@faceprepcampus"><i className="fab fa-youtube"></i></a>
+              <a href="mailto:connect@faceprep.in"><i className="fas fa-envelope"></i></a>
             </div>
             <p className="contact-info">event2026@bcas.ac.in</p>
           </div>
