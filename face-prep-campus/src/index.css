@@ -2,30 +2,23 @@
    1. RESET, VARIABLES & BASE STYLES
    ========================================= */
 :root {
-  /* --- THEME 1: MIDNIGHT TECH (Default) --- */
-  /* Deep, rich purple/blue gradient. Professional & Futuristic. */
-  --bg-gradient: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+  /* Updated to White Theme */
+  --bg-gradient: #ffffff;
+  --bg-color: #ffffff;
+  
+  /* Text Colors adjusted for white background */
+  --text-dark: #1a202c;      
+  --text-light: #4a5568;     
+  
   --primary-gradient: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
   --secondary-gradient: linear-gradient(45deg, #ff416c, #ff4b2b);
-  
-  /* --- THEME 2: OCEAN DEPTH (Uncomment to use) --- */
-  /* --bg-gradient: linear-gradient(135deg, #1c92d2 0%, #f2fcfe 100%); */
-  /* --primary-gradient: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%); */
-  
-  /* --- THEME 3: NEON NIGHTS (Uncomment to use) --- */
-  /* --bg-gradient: linear-gradient(135deg, #8E2DE2 0%, #4A00E0 100%); */
-  /* --primary-gradient: linear-gradient(135deg, #00F260 0%, #0575E6 100%); */
 
-  /* Glassmorphism Variables */
-  --glass-bg: rgba(255, 255, 255, 0.1); /* More transparent for dark bg */
-  --glass-border: rgba(255, 255, 255, 0.2);
-  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  /* Updated Glassmorphism for light background */
+  --glass-bg: rgba(255, 255, 255, 0.7); 
+  --glass-border: rgba(0, 0, 0, 0.1);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
   
-  /* Text Colors (Adjusted for Dark Background) */
-  --text-dark: #ffffff;      /* White text for dark bg */
-  --text-light: #e2e8f0;     /* Off-white for secondary text */
-  --bg-color: #0f0c29;       /* Fallback solid color */
-  --card-bg: rgba(255, 255, 255, 0.95); /* Keep cards bright for contrast */
+  --card-bg: #ffffff; 
 }
 
 * {
@@ -39,18 +32,17 @@ body {
   color: var(--text-dark);
   line-height: 1.6;
   overflow-x: hidden;
-  background: var(--bg-gradient); /* Applied global background */
-  background-attachment: fixed; /* Parallax effect */
+  background: var(--bg-color);
+  background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
 }
 
 /* =========================================
-   2. HERO SECTION
+   2. HERO SECTION & VIDEO BG
    ========================================= */
 .hero {
   height: 100vh;
   min-height: 600px;
-  /* Removed local background to use body's global gradient */
   position: relative;
   text-align: center;
   color: white;
@@ -60,48 +52,59 @@ body {
   align-items: center;
   padding: 20px;
   overflow: hidden;
+  background: transparent; /* Allow video to show through */
 }
 
-/* Floating Background Particles */
+/* Video Background Styling */
+.hero-video-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+
+/* Overlay to ensure text readability on video */
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); 
+  z-index: 0;
+}
+
+/* Floating Background Particles (subtle adjustment for visibility) */
 .hero::before, .hero::after {
   content: '';
   position: absolute;
   width: 300px;
   height: 300px;
-  background: rgba(255, 255, 255, 0.05); /* Subtle shine */
   border-radius: 50%;
   animation: float 10s infinite ease-in-out;
   z-index: 1;
-  filter: blur(80px); /* Soft glow effect */
+  filter: blur(80px);
 }
 
-.hero::before { top: -10%; left: -10%; animation-delay: 0s; background: var(--primary-gradient); opacity: 0.3; }
-.hero::after { bottom: -10%; right: -10%; animation-delay: 5s; background: var(--secondary-gradient); opacity: 0.3; }
+.hero::before { top: -10%; left: -10%; background: var(--primary-gradient); opacity: 0.2; }
+.hero::after { bottom: -10%; right: -10%; background: var(--secondary-gradient); opacity: 0.2; }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(20px) scale(1.1); }
-}
-
-/* --- HERO ENHANCEMENTS --- */
+/* Grid Overlay */
 .hero-grid-overlay {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
   background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 50px 50px;
-  background-position: center top;
-  perspective: 1000px;
-  transform: scale(1.2);
-  animation: moveGrid 20s linear infinite;
-  z-index: 0;
+  z-index: 1;
   pointer-events: none;
-}
-
-@keyframes moveGrid {
-  0% { transform: translateY(0) scale(1.2); }
-  100% { transform: translateY(50px) scale(1.2); }
 }
 
 /* --- LOGO STYLES --- */
@@ -109,32 +112,22 @@ body {
   position: absolute;
   top: 30px;
   height: 80px; 
-  width: auto;
   z-index: 10;
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
-  display: block;
+  transition: transform 0.3s ease;
 }
-
 .logo-left { left: 40px; background: white; border-radius: 12px; padding: 5px; }
 .logo-right { right: 40px; }
 
-.logo-corner:hover { transform: scale(1.1); }
-.logo-corner img { height: 100%; width: auto; display: block; }
-
 /* --- HERO TEXT --- */
 .hero-content { position: relative; z-index: 5; }
-
 .hero-content h1 {
   font-family: 'Poppins', sans-serif;
   font-weight: 800;
   font-size: clamp(2.5rem, 6vw, 5rem);
-  margin-bottom: 1rem;
   text-shadow: 0 4px 15px rgba(0,0,0,0.4);
-  letter-spacing: -1px;
-  animation: fadeInUp 0.8s ease-out;
   color: #fff;
 }
+
 
 .hero-content p {
   font-size: clamp(1rem, 3vw, 1.5rem);
