@@ -2,11 +2,24 @@ import React, { useState } from 'react';
 
 const EventCard = ({ event }) => {
   const [showDetails, setShowDetails] = useState(false);
+  
+  // State to handle image loading errors
+  const [imgSrc, setImgSrc] = useState(event.image);
+
+  const handleImageError = () => {
+    // Fallback image if the original fails (Abstract tech background)
+    setImgSrc('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1000&q=80');
+  };
 
   return (
     <div className="event-card">
       <div className="event-image">
-        <img src={event.image} alt={event.title} loading="lazy" />
+        <img 
+          src={imgSrc} 
+          alt={event.title} 
+          loading="lazy" 
+          onError={handleImageError} // <--- Added Error Handler
+        />
         <div className="event-overlay">
           <i className={`fas ${event.icon}`}></i>
         </div>
@@ -15,7 +28,6 @@ const EventCard = ({ event }) => {
         <h4>{event.title}</h4>
         <p className="short">{event.shortDesc}</p>
         
-        {/* Animated Wrapper for Details */}
         <div className={`event-details-wrapper ${showDetails ? 'open' : ''}`}>
           <div className="event-details">
             <p><i className="fas fa-clock"></i> {event.time}</p>
