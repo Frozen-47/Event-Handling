@@ -13,7 +13,7 @@ const Navbar = ({ activeTab, setActiveTab }) => {
   }, []);
 
   return (
-    <div className="sticky-nav" style={{ 
+    <div className="sticky-header" style={{ 
       boxShadow: scrolled ? '0 4px 20px rgba(0,0,0,0.15)' : '0 2px 10px rgba(0,0,0,0.1)' 
     }}>
       <div className="container">

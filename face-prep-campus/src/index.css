@@ -38,6 +38,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* ================= HERO SECTION ================= */
 .hero {
   height: 100vh;
   min-height: 700px;
@@ -70,6 +71,17 @@ body {
   top: 0; left: 0; right: 0; bottom: 0;
   background: rgba(0, 0, 0, 0.6);
   z-index: 0;
+}
+
+/* Added Missing Class */
+.hero-grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .hero-main-layout {
@@ -249,6 +261,7 @@ body {
 @keyframes scrollWheel { 0% { opacity: 1; top: 6px; } 100% { opacity: 0; top: 20px; } }
 @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); } 40% { transform: translate(-50%, -10px); } 60% { transform: translate(-50%, -5px); } }
 
+/* ================= EVENTS SECTION ================= */
 .events-container { 
   position: relative;
   padding-top: 100px;
@@ -264,6 +277,7 @@ body {
 }
 .container { max-width: 1400px; margin: 0 auto; width: 100%; }
 
+/* Sticky Header */
 .sticky-header {
   position: sticky;
   top: 0;
@@ -288,6 +302,14 @@ body {
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
+}
+
+/* Added Missing Class */
+.section-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
 }
 
 .tab-navigation {
@@ -346,6 +368,7 @@ body {
   opacity: 0.2;
 }
 
+/* Category Backgrounds */
 .comm-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
 .business-bg { background: linear-gradient(135deg, #009efd 0%, #2af598 100%); }
 .tech-bg { background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%); }
@@ -389,6 +412,7 @@ body {
 .category-intro-card h3 { font-family: 'Poppins', sans-serif; font-size: 1.8rem; margin-bottom: 10px; }
 .desc { font-size: 0.95rem; opacity: 0.9; font-style: italic; }
 
+/* Event Cards */
 .event-card {
   background: var(--card-bg);
   border-radius: 20px;
@@ -444,6 +468,7 @@ body {
 .register-btn { background: var(--secondary-gradient); text-decoration: none; }
 .register-btn:hover { box-shadow: 0 5px 15px rgba(238, 90, 36, 0.4); }
 
+/* ================= FOOTER ================= */
 .footer {
   scroll-snap-align: start;
   background: var(--text-dark);
@@ -540,6 +565,7 @@ body {
 .made-with i { color: #f15136; animation: beat 1s infinite; }
 @keyframes beat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
 
+/* ================= MOBILE RESPONSIVENESS ================= */
 @media (max-width: 1024px) {
   .hero {
     min-height: 100svh;
@@ -579,10 +605,12 @@ body {
     justify-content: center;
   }
 
+  /* Force logos to fit mobile */
   .logo-corner { height: 45px !important; }
   .logo-left { left: 20px; padding: 4px; }
   .logo-right { right: 20px; }
 
+  /* Mobile Sticky Header */
   .sticky-header {
     height: 70px;
     padding: 0 15px;
@@ -602,9 +630,11 @@ body {
   }
   
   .header-left h2 { font-size: 1.4rem; }
+  .section-title { font-size: 1.2rem; }
   .coordinator-tag { font-size: 0.8rem; }
   .big-icon { display: none; }
 
+  /* Mobile Events Layout */
   .events-container {
     height: auto;
     min-height: unset;
