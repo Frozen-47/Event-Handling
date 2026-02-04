@@ -526,8 +526,8 @@ body {
     align-items: center;
     text-align: center;
   }
-  .hero-content h1 { text-align: center; font-size: 2.5rem; line-height: 1.2; }
-  .hero-content p { padding: 0 10px; }
+  .hero-content h1 { text-align: center; font-size: 2.2rem; line-height: 1.2; }
+  .hero-content p { padding: 0 10px; font-size: 1rem; }
   
   .typing-container, .countdown-container {
     justify-content: center;
@@ -542,12 +542,37 @@ body {
   .coordinator-tag { font-size: 0.8rem; }
   .big-icon { display: none; }
 
-  .events-grid { gap: 30px; }
-  .event-card { border-radius: 15px; }
+  /* MOBILE-FIRST EVENT GRID CHANGES */
+  .events-grid { 
+    display: flex;
+    flex-direction: column; /* Stack vertically on mobile */
+    overflow-x: hidden; /* Remove horizontal scroll */
+    gap: 40px;
+    padding-bottom: 60px;
+  }
+
+  .category-group {
+    flex-direction: column; /* Stack header and cards */
+    width: 100%;
+    gap: 20px;
+  }
+
+  .category-intro-card {
+    min-width: unset;
+    width: 100%;
+    border-radius: 15px;
+  }
+
+  .event-card { 
+    border-radius: 15px;
+    min-width: unset;
+    width: 100%; /* Full width cards */
+  }
+
   .event-content h4 { font-size: 1.2rem; }
   
   .event-actions { flex-direction: column; }
-  .cta { width: 80%; padding: 14px 20px; }
+  .cta { width: 100%; padding: 14px 20px; margin-top: 10px; }
   
   .countdown-container { gap: 10px; }
   .time-box { min-width: 60px; padding: 10px; }
@@ -555,8 +580,8 @@ body {
   .typing-text { font-size: 1.2rem; }
   .badge-container { margin-top: 20px; }
   
-  .footer { text-align: center; }
-  .footer-content { justify-items: center; }
+  .footer { text-align: center; padding: 40px 20px; }
+  .footer-content { justify-items: center; gap: 30px; grid-template-columns: 1fr; }
   .social-icons { justify-content: center; }
   .footer-links a:hover { padding-left: 0; }
 }
