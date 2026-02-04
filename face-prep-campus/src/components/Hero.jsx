@@ -17,7 +17,7 @@ const Hero = () => {
   }, []);
 
   function calculateTimeLeft() {
-    const difference = +new Date("2026-02-11T09:00:00") - +new Date();
+    const difference = +new Date("2026-02-11T09:00:00+05:30") - +new Date();
     let timeLeft = {};
     if (difference > 0) {
       timeLeft = {
@@ -52,7 +52,6 @@ const Hero = () => {
 
   return (
     <section className="hero">
-      {/* Background Video */}
       <video 
         autoPlay 
         loop 
@@ -66,7 +65,6 @@ const Hero = () => {
       <div className="video-overlay"></div>
       <div className="hero-grid-overlay"></div>
 
-      {/* Logos */}
       <a 
         href="https://www.bcas.ac.in/" 
         target="_blank" 
@@ -74,7 +72,7 @@ const Hero = () => {
         className="logo-corner logo-left" 
         style={{ height: '55px', width: 'auto' }} 
       >
-        <img src="/bcas.png" alt="College Logo" style={{ height: '100%', width: 'auto' }} />
+        <img src="/bcas.png" alt="BCAS Logo" style={{ height: '100%', width: 'auto' }} />
       </a>
 
       <a 
@@ -84,19 +82,15 @@ const Hero = () => {
         className="logo-corner logo-right" 
         style={{ height: '55px', top: '35px' }}
       >
-        <img src="https://faceprepcampus.com/wp-content/uploads/2024/11/faceprepcampus-logo.svg" alt="FACE Prep" />
+        <img src="https://faceprepcampus.com/wp-content/uploads/2024/11/faceprepcampus-logo.svg" alt="FACE Prep Logo" />
       </a>
 
-      {/* --- NEW SPLIT LAYOUT CONTAINER --- */}
       <div className="hero-main-layout">
         
-        {/* Left Column: 30% for Image */}
         <div className="hero-left-col">
-           {/* Replace '/faceprep.png' with your desired side image */}
-           <img src="/faceprep.png" alt="Event Feature" className="hero-feature-img" /> 
+           <img src="/faceprep.png" alt="Face Prep Campus Event" className="hero-feature-img" /> 
         </div>
 
-        {/* Right Column: 70% for Content */}
         <div className="hero-right-col">
           <div className="hero-content">
             <div className="badge-container">

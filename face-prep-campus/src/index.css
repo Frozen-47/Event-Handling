@@ -17,17 +17,6 @@ html {
   --card-bg: #ffffff;
 }
 
-.reveal {
-  opacity: 0;
-  transform: translateY(50px);
-  transition: all 0.8s ease-out;
-}
-
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -44,7 +33,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* HERO SECTION */
 .hero {
   height: 100vh;
   min-height: 700px;
@@ -69,6 +57,7 @@ body {
   z-index: -1;
   transform: translate(-50%, -50%);
   object-fit: cover;
+  background: #1a202c; 
 }
 
 .video-overlay {
@@ -255,7 +244,6 @@ body {
 @keyframes scrollWheel { 0% { opacity: 1; top: 6px; } 100% { opacity: 0; top: 20px; } }
 @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); } 40% { transform: translate(-50%, -10px); } 60% { transform: translate(-50%, -5px); } }
 
-/* --- EVENTS CONTAINER --- */
 .events-container { 
   position: relative;
   padding-top: 100px;
@@ -269,7 +257,6 @@ body {
 }
 .container { max-width: 1400px; margin: 0 auto; width: 100%; }
 
-/* --- STICKY DYNAMIC HEADER --- */
 .sticky-header {
   position: absolute;
   top: 0;
@@ -317,40 +304,29 @@ body {
   opacity: 0.2;
 }
 
-/* Background Gradients */
 .comm-bg { background: var(--secondary-gradient); }
 .business-bg { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
 .tech-bg { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
 .tamil-bg { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
 
-/* --- HORIZONTAL SCROLL AREA --- */
 .events-grid {
   display: flex;
   overflow-x: auto;
   gap: 60px;
   padding: 20px 5px 40px;
-  
-  /* --- SOLID SCROLL FIXES --- */
-  scroll-behavior: auto;         /* Allow instant JS updates */
-  scroll-snap-type: x mandatory; /* Enforce locking to items */
-  overscroll-behavior-x: none;   /* PREVENT BOUNCE (Solid Boundaries) */
-  
+  scroll-behavior: auto;
+  overscroll-behavior-x: none;
   scrollbar-width: none;
 }
 .events-grid::-webkit-scrollbar {
   display: none;
 }
 
-/* Category Group Wrapper */
 .category-group {
   display: flex;
   gap: 30px;
   flex: 0 0 auto;
   align-items: stretch;
-  
-  /* Snap the entire group start */
-  scroll-snap-align: start;
-  scroll-snap-stop: always; /* Force stop here, no skipping */
 }
 
 .category-intro-card {
@@ -364,9 +340,6 @@ body {
   padding: 30px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
   transition: transform 0.3s ease;
-  
-  /* Snap the intro card itself */
-  scroll-snap-align: start;
 }
 .category-intro-card:hover { transform: translateY(-5px); }
 
@@ -386,9 +359,6 @@ body {
   min-width: 320px;
   width: 320px;
   flex: 0 0 auto;
-  
-  /* Snap individual cards for precision */
-  scroll-snap-align: start;
 }
 .event-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
 
@@ -432,7 +402,6 @@ body {
 .register-btn { background: var(--secondary-gradient); text-decoration: none; }
 .register-btn:hover { box-shadow: 0 5px 15px rgba(238, 90, 36, 0.4); }
 
-/* FOOTER STYLES */
 .footer {
   scroll-snap-align: start;
   background: var(--text-dark);
