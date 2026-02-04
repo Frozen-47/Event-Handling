@@ -6,16 +6,27 @@ html {
 }
 
 :root {
- --bg-gradient: #ffffff;
+  /* White Theme Backgrounds */
+  --bg-gradient: #ffffff;
   --bg-color: #ffffff;
+  
+  /* Text Colors */
   --text-dark: #1a202c;      
   --text-light: #4a5568;     
+  
+  /* --- NEW THEME COLORS (#f15136) --- */
+  /* Primary: The main theme color gradient */
   --primary-gradient: linear-gradient(135deg, #f15136 0%, #ff8e75 100%);
+  
+  /* Secondary: A slightly richer/darker variation for contrast */
   --secondary-gradient: linear-gradient(45deg, #f15136, #c43c25);
+
+  /* Glassmorphism for light background */
   --glass-bg: rgba(255, 255, 255, 0.7); 
   --glass-border: rgba(0, 0, 0, 0.1);
   --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
-  --card-bg: #ffffff;
+  
+  --card-bg: #ffffff; 
 }
 /* =========================================
    SCROLL REVEAL ANIMATIONS
