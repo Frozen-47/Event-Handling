@@ -1,49 +1,77 @@
 import React from 'react';
 
 const Footer = () => {
-  return (
-    <footer className="footer">
-      <div className="container">
-        <div className="footer-content">
-          
-          {/* Brand Section */}
-          <div className="footer-brand">
-            <h2>FACE PREP CAMPUS</h2>
-            <p>Bharathidasan College of Arts and Science</p>
-            <p className="tagline">Innovate • Compete • Excel</p>
-          </div>
+    return (
+        <footer className="footer">
+            <div className="container">
+                <div className="footer-content">
 
-          {/* Quick Links */}
-          <div className="footer-links">
-            <h3>Quick Links</h3>
-            <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#events-section">Events Portal</a></li>
-              <li><a href="https://faceprepcampus.com/" target="_blank" rel="noopener noreferrer">FACE Prep</a></li>
-              <li><a href="https://www.bcas.ac.in/" target="_blank" rel="noopener noreferrer">BCAS Official</a></li>
-            </ul>
-          </div>
+                    {/* Brand Section */}
+                    <div className="footer-brand">
+                        <h2>FACE PREP CAMPUS</h2>
+                        <p>Bharathidasan College of Arts and Science</p>
+                        <p className="tagline">Innovate • Compete • Excel</p>
+                    </div>
 
-          {/* Social / Contact */}
-          <div className="footer-social">
-            <h3>Connect With Us</h3>
-            <div className="social-icons">
-              <a href="https://www.instagram.com/fpc_at_bharathidasan/"><i className="fab fa-instagram"></i></a>
-              <a href="https://www.linkedin.com/company/face-prep-campus"><i className="fab fa-linkedin-in"></i></a>
-              <a href="https://www.youtube.com/@faceprepcampus"><i className="fab fa-youtube"></i></a>
-              <a href="mailto:connect@faceprep.in"><i className="fas fa-envelope"></i></a>
+                    {/* Quick Links */}
+                    <div className="footer-links">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#events-section">Events Portal</a></li>
+                            <li><a href="https://faceprepcampus.com/" target="_blank" rel="noopener noreferrer">FACE Prep</a></li>
+                            <li><a href="https://www.bcas.ac.in/" target="_blank" rel="noopener noreferrer">BCAS Official</a></li>
+                        </ul>
+                    </div>
+
+                    {/* Social / Contact */}
+                    <div className="footer-social">
+                        <h3>Connect With Us</h3>
+                        <div className="social-icons">
+                            <a
+                                href="https://www.instagram.com/fpc_at_bharathidasan/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <i className="fab fa-instagram"></i>
+                            </a>
+
+                            <a
+                                href="https://www.linkedin.com/company/face-prep-campus"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <i className="fab fa-linkedin-in"></i>
+                            </a>
+
+                            <a
+                                href="https://www.youtube.com/@faceprepcampus"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <i className="fab fa-youtube"></i>
+                            </a>
+
+                            <a
+                                href="mailto:connect@faceprep.in"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <i className="fas fa-envelope"></i>
+                            </a>
+                        </div>
+
+                        <p className="contact-info">connect@faceprep.in</p>
+                    </div>
+                </div>
+
+                <div className="footer-bottom">
+                    <div className="divider"></div>
+                    <p>&copy; 2026 FACE Prep Campus Event. All rights reserved.</p>
+                </div>
             </div>
-            <p className="contact-info">event2026@bcas.ac.in</p>
-          </div>
-        </div>
-
-        <div className="footer-bottom">
-          <div className="divider"></div>
-          <p>&copy; 2026 FACE Prep Campus Event. All rights reserved.</p>
-        </div>
-      </div>
-    </footer>
-  );
+        </footer>
+    );
 };
 
 export default Footer;
