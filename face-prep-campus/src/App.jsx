@@ -21,28 +21,23 @@ const App = () => {
       const isSectionActive = rect.top >= -50 && rect.top <= 50;
 
       if (isSectionActive && container) {
-        const { scrollLeft, scrollWidth, clientWidth } = container;
-        
-        // 2. Detect Edges with Tolerance (Fixes "Scroll Trap" on different screens)
-        const isAtStart = scrollLeft <= 0;
-        // logic: if (current_pos + view_width) >= (total_width - small_buffer)
-        const isAtEnd = (scrollLeft + clientWidth) >= (scrollWidth - 5);
+        // Only run horizontal scroll logic if the container actually scrolls horizontally (Desktop)
+        // We check if scrollWidth is greater than clientWidth
+        if (container.scrollWidth > container.clientWidth) {
+          const { scrollLeft, scrollWidth, clientWidth } = container;
+          
+          // 2. Detect Edges with Tolerance
+          const isAtStart = scrollLeft <= 0;
+          const isAtEnd = (scrollLeft + clientWidth) >= (scrollWidth - 5);
 
-        // 3. EXIT STRATEGIES
-        // If scrolling UP at the start -> Allow vertical scroll to Hero
-        if (evt.deltaY < 0 && isAtStart) {
-          return; 
+          // 3. EXIT STRATEGIES
+          if (evt.deltaY < 0 && isAtStart) return; 
+          if (evt.deltaY > 0 && isAtEnd) return;
+
+          // 4. Horizontal Scroll Execution
+          evt.preventDefault();
+          container.scrollLeft += evt.deltaY * 2.5; 
         }
-
-        // If scrolling DOWN at the end -> Allow vertical scroll to Footer
-        if (evt.deltaY > 0 && isAtEnd) {
-          return;
-        }
-
-        // 4. Horizontal Scroll Execution
-        evt.preventDefault();
-        // Multiply by 2.5 for a "heavier" solid feel
-        container.scrollLeft += evt.deltaY * 2.5; 
       }
     };
 
@@ -52,7 +47,7 @@ const App = () => {
     return () => window.removeEventListener('wheel', handleWheel);
   }, []);
 
-  // 2. HEADER UPDATE LOGIC
+  // 2. HEADER UPDATE LOGIC (FIXED)
   useEffect(() => {
     const container = scrollContainerRef.current;
     
@@ -69,8 +64,10 @@ const App = () => {
         });
       },
       {
-        root: container, 
-        threshold: 0.4, // Increased threshold for "solid" section detection
+        // FIX: Removed 'root: container' so it uses the browser viewport instead.
+        // This ensures it works correctly on both Mobile (Vertical) and Desktop (Horizontal).
+        root: null, 
+        threshold: 0.2, // Lowered slightly to catch elements earlier on mobile
       }
     );
 
