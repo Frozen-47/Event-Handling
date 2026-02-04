@@ -1,7 +1,12 @@
 html {
   scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
-  overflow-y: scroll;
+}
+
+@media (min-width: 1025px) {
+  html {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+  }
 }
 
 :root {
@@ -260,7 +265,7 @@ body {
 .container { max-width: 1400px; margin: 0 auto; width: 100%; }
 
 .sticky-header {
-  position: absolute;
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
@@ -270,6 +275,7 @@ body {
   align-items: center;
   padding: 0 40px;
   color: white;
+  background: var(--text-dark);
   transition: background 0.5s ease;
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
   border-bottom: 1px solid rgba(255,255,255,0.1);
@@ -501,6 +507,12 @@ body {
 @keyframes beat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
 
 @media (max-width: 1024px) {
+  .hero {
+    min-height: 100svh;
+    height: auto;
+    padding: 60px 0;
+  }
+
   .hero-main-layout {
     flex-direction: column;
     text-align: center;
@@ -537,22 +549,46 @@ body {
   .logo-left { left: 20px; padding: 4px; }
   .logo-right { right: 20px; }
 
-  .sticky-header { padding: 0 20px; height: 80px; }
+  .sticky-header {
+    height: 70px;
+    padding: 0 15px;
+    position: sticky;
+    top: 0;
+  }
+  
+  .sticky-header .container {
+    overflow-x: auto;
+    white-space: nowrap;
+    justify-content: flex-start;
+  }
+  
+  .header-content {
+     flex-direction: column;
+     gap: 10px;
+  }
+  
   .header-left h2 { font-size: 1.4rem; }
   .coordinator-tag { font-size: 0.8rem; }
   .big-icon { display: none; }
 
-  /* MOBILE-FIRST EVENT GRID CHANGES */
+  .events-container {
+    height: auto;
+    min-height: unset;
+    scroll-snap-align: none;
+    padding-top: 0;
+  }
+
   .events-grid { 
     display: flex;
-    flex-direction: column; /* Stack vertically on mobile */
-    overflow-x: hidden; /* Remove horizontal scroll */
+    flex-direction: column;
+    overflow-x: hidden;
     gap: 40px;
     padding-bottom: 60px;
+    padding: 20px 15px 80px;
   }
 
   .category-group {
-    flex-direction: column; /* Stack header and cards */
+    flex-direction: column;
     width: 100%;
     gap: 20px;
   }
@@ -566,7 +602,7 @@ body {
   .event-card { 
     border-radius: 15px;
     min-width: unset;
-    width: 100%; /* Full width cards */
+    width: 100%;
   }
 
   .event-content h4 { font-size: 1.2rem; }
