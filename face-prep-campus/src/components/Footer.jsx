@@ -19,7 +19,7 @@ const Footer = () => {
                         <ul>
                             <li><a href="#">Home</a></li>
                             <li><a href="#events-section">Events Portal</a></li>
-                            <li><a href="https://faceprepcampus.com/" target="_blank" rel="noopener noreferrer">FACE Prep</a></li>
+                            <li><a href="https://faceprepcampus.com/" target="_blank" rel="noopener noreferrer">FACE Prep Campus</a></li>
                             <li><a href="https://www.bcas.ac.in/" target="_blank" rel="noopener noreferrer">BCAS Official</a></li>
                         </ul>
                     </div>
