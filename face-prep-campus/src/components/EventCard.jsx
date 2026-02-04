@@ -15,10 +15,13 @@ const EventCard = ({ event }) => {
         <h4>{event.title}</h4>
         <p className="short">{event.shortDesc}</p>
         
-        <div className={`event-details ${showDetails ? '' : 'hidden'}`}>
-          <p><i className="fas fa-clock"></i> {event.time}</p>
-          <p><i className="fas fa-map-marker-alt"></i> {event.venue}</p>
-          <p><i className="fas fa-info-circle"></i> {event.details}</p>
+        {/* Animated Wrapper for Details */}
+        <div className={`event-details-wrapper ${showDetails ? 'open' : ''}`}>
+          <div className="event-details">
+            <p><i className="fas fa-clock"></i> {event.time}</p>
+            <p><i className="fas fa-map-marker-alt"></i> {event.venue}</p>
+            <p><i className="fas fa-info-circle"></i> {event.details}</p>
+          </div>
         </div>
 
         <div className="event-actions">

@@ -13,7 +13,6 @@ const Hero = () => {
         <img 
           src="/bcas.png" 
           alt="College Logo" 
-          style={{ height: '100%', width: 'auto' }} 
         />
       </a>
 
@@ -23,12 +22,12 @@ const Hero = () => {
         target="_blank" 
         rel="noopener noreferrer" 
         className="logo-corner logo-right"
+        // Specific inline style for fine-tuning this specific SVG logo size relative to the other
+        style={{ height: '55px', top: '35px' }}
       >
-        {/* Note: Ensure this src matches your file (fpc.png or the SVG URL) */}
         <img 
-          src="/fpc.png" 
+          src="https://faceprepcampus.com/wp-content/uploads/2024/11/faceprepcampus-logo.svg" 
           alt="FACE Prep Campus" 
-          style={{ height: '100%', width: 'auto' }} 
         />
       </a>
 
