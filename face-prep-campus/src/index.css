@@ -276,7 +276,7 @@ body {
 }
 .container { max-width: 1400px; margin: 0 auto; width: 100%; }
 
-/* Sticky Header - Use this class in your Navbar.jsx! */
+/* Sticky Header */
 .sticky-header {
   position: sticky;
   top: 0;
@@ -587,8 +587,10 @@ body {
     order: 1;
     margin-bottom: 10px;
   }
+  
+  /* HIDE THE HERO IMAGE ON MOBILE */
   .hero-feature-img {
-    max-width: 250px; 
+    display: none; 
   }
 
   .hero-right-col { order: 2; }
