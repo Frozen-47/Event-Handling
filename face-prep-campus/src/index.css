@@ -38,7 +38,7 @@ body {
   font-family: 'Inter', sans-serif;
   color: var(--text-dark);
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x: hidden; /* FIX: Prevents page-wide horizontal scroll issues */
   background: var(--bg-color);
   background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
@@ -255,11 +255,10 @@ body {
 @keyframes scrollWheel { 0% { opacity: 1; top: 6px; } 100% { opacity: 0; top: 20px; } }
 @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); } 40% { transform: translate(-50%, -10px); } 60% { transform: translate(-50%, -5px); } }
 
-
 /* --- EVENTS CONTAINER --- */
 .events-container { 
-  position: relative; /* Essential for sticky header */
-  padding-top: 100px; /* Space for the header */
+  position: relative;
+  padding-top: 100px;
   padding-bottom: 40px;
   scroll-snap-align: start;
   min-height: 100vh;
@@ -276,7 +275,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 90px; /* Fixed Height */
+  height: 90px;
   z-index: 500;
   display: flex;
   align-items: center;
@@ -324,14 +323,16 @@ body {
 .tech-bg { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
 .tamil-bg { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
 
-
 /* --- HORIZONTAL SCROLL AREA --- */
 .events-grid {
   display: flex;
   overflow-x: auto;
-  gap: 60px; /* Spacing between Category Groups */
+  gap: 60px;
   padding: 20px 5px 40px;
-  scroll-behavior: auto;
+  
+  /* FIX: Ensure instant scrolling response from JS logic */
+  scroll-behavior: auto; 
+  
   scrollbar-width: none;
 }
 .events-grid::-webkit-scrollbar {
@@ -341,12 +342,11 @@ body {
 /* Category Group Wrapper */
 .category-group {
   display: flex;
-  gap: 30px; /* Spacing between cards inside a category */
+  gap: 30px;
   flex: 0 0 auto;
   align-items: stretch;
 }
 
-/* Intro Card inside the stream */
 .category-intro-card {
   min-width: 300px;
   border-radius: 20px;
@@ -365,7 +365,6 @@ body {
 .category-intro-card h3 { font-family: 'Poppins', sans-serif; font-size: 1.8rem; margin-bottom: 10px; }
 .desc { font-size: 0.95rem; opacity: 0.9; font-style: italic; }
 
-/* Event Card Sizing */
 .event-card {
   background: var(--card-bg);
   border-radius: 20px;
@@ -421,73 +420,13 @@ body {
 .register-btn { background: var(--secondary-gradient); text-decoration: none; }
 .register-btn:hover { box-shadow: 0 5px 15px rgba(238, 90, 36, 0.4); }
 
-@media (max-width: 1024px) {
-  .hero-main-layout {
-    flex-direction: column;
-    text-align: center;
-    padding-top: 100px;
-    gap: 30px;
-  }
-
-  .hero-left-col, .hero-right-col {
-    flex: 0 0 auto;
-    width: 100%;
-  }
-
-  .hero-left-col {
-    order: 1;
-    margin-bottom: 10px;
-  }
-  .hero-feature-img {
-    max-width: 250px; 
-  }
-
-  .hero-right-col { order: 2; }
-  .hero-content {
-    align-items: center;
-    text-align: center;
-  }
-  .hero-content h1 { text-align: center; font-size: 2.5rem; line-height: 1.2; }
-  .hero-content p { padding: 0 10px; }
-  
-  .typing-container, .countdown-container {
-    justify-content: center;
-  }
-
-  .logo-corner { height: 45px !important; }
-  .logo-left { left: 20px; padding: 4px; }
-  .logo-right { right: 20px; }
-
-  /* Mobile Tweaks */
-  .sticky-header { padding: 0 20px; height: 80px; }
-  .header-left h2 { font-size: 1.4rem; }
-  .coordinator-tag { font-size: 0.8rem; }
-  .big-icon { display: none; }
-
-  .events-grid { gap: 30px; }
-  .event-card { border-radius: 15px; }
-  .event-content h4 { font-size: 1.2rem; }
-  
-  .event-actions { flex-direction: column; }
-  .cta { width: 80%; padding: 14px 20px; }
-  
-  .countdown-container { gap: 10px; }
-  .time-box { min-width: 60px; padding: 10px; }
-  .time-value { font-size: 1.5rem; }
-  .typing-text { font-size: 1.2rem; }
-  .badge-container { margin-top: 20px; }
-}
-/* ... (Existing styles remain unchanged) ... */
-
-/* =========================================
-   6. FOOTER STYLES
-   ========================================= */
+/* FOOTER STYLES */
 .footer {
-  scroll-snap-align: start; /* Snaps as the 3rd section */
-  background: var(--text-dark); /* Dark background */
+  scroll-snap-align: start;
+  background: var(--text-dark);
   color: white;
   padding: 80px 20px 40px;
-  min-height: 50vh; /* Takes up half screen height for balance */
+  min-height: 50vh;
   display: flex;
   align-items: center;
   position: relative;
@@ -578,8 +517,61 @@ body {
 .made-with i { color: #f15136; animation: beat 1s infinite; }
 @keyframes beat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
 
-/* Mobile Footer Adjustments */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+  .hero-main-layout {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 100px;
+    gap: 30px;
+  }
+
+  .hero-left-col, .hero-right-col {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+
+  .hero-left-col {
+    order: 1;
+    margin-bottom: 10px;
+  }
+  .hero-feature-img {
+    max-width: 250px; 
+  }
+
+  .hero-right-col { order: 2; }
+  .hero-content {
+    align-items: center;
+    text-align: center;
+  }
+  .hero-content h1 { text-align: center; font-size: 2.5rem; line-height: 1.2; }
+  .hero-content p { padding: 0 10px; }
+  
+  .typing-container, .countdown-container {
+    justify-content: center;
+  }
+
+  .logo-corner { height: 45px !important; }
+  .logo-left { left: 20px; padding: 4px; }
+  .logo-right { right: 20px; }
+
+  .sticky-header { padding: 0 20px; height: 80px; }
+  .header-left h2 { font-size: 1.4rem; }
+  .coordinator-tag { font-size: 0.8rem; }
+  .big-icon { display: none; }
+
+  .events-grid { gap: 30px; }
+  .event-card { border-radius: 15px; }
+  .event-content h4 { font-size: 1.2rem; }
+  
+  .event-actions { flex-direction: column; }
+  .cta { width: 80%; padding: 14px 20px; }
+  
+  .countdown-container { gap: 10px; }
+  .time-box { min-width: 60px; padding: 10px; }
+  .time-value { font-size: 1.5rem; }
+  .typing-text { font-size: 1.2rem; }
+  .badge-container { margin-top: 20px; }
+  
   .footer { text-align: center; }
   .footer-content { justify-items: center; }
   .social-icons { justify-content: center; }
