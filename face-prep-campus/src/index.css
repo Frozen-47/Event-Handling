@@ -419,10 +419,18 @@ body {
   }
   
   /* Resize Logos on Mobile */
-  .logo-corner {
-    height: 60px;
-    top: 20px;
-  }
+ .logo-corner {
+  position: absolute;
+  top: 30px;
+  height: 90px;
+  width: auto;
+  z-index: 10;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+  
+  /* Add this line: */
+  display: block; 
+}
   .logo-left {
     left: 20px;
   }
