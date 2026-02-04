@@ -40,9 +40,6 @@ const Footer = () => {
         <div className="footer-bottom">
           <div className="divider"></div>
           <p>&copy; 2026 FACE Prep Campus Event. All rights reserved.</p>
-          <p className="made-with">
-            Made with <i className="fas fa-heart"></i> by Student Dev Team
-          </p>
         </div>
       </div>
     </footer>
