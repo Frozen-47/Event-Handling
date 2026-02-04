@@ -10,51 +10,49 @@ const App = () => {
   const sectionRef = useRef(null);
   const [currentCategory, setCurrentCategory] = useState(categories[0]);
 
-  // 1. GLOBAL SCROLL LOGIC (Fixed to prevent "Scroll Trap")
+  // 1. GLOBAL SCROLL LOGIC
   useEffect(() => {
     const container = scrollContainerRef.current;
     const section = sectionRef.current;
 
     const handleWheel = (evt) => {
-      // Get position of the Events Section relative to viewport
+      // 1. Check if Events Section is in view (snapped)
       const rect = section.getBoundingClientRect();
-      
-      // Check if the Events Section is mostly visible (snapped in view)
-      // We use a small buffer (-50 to 50) to detect if we are "on" this slide
       const isSectionActive = rect.top >= -50 && rect.top <= 50;
 
       if (isSectionActive && container) {
         const { scrollLeft, scrollWidth, clientWidth } = container;
         
-        // precise check for being at the start or end of horizontal scroll
+        // 2. Detect Edges with Tolerance (Fixes "Scroll Trap" on different screens)
         const isAtStart = scrollLeft <= 0;
-        const isAtEnd = Math.ceil(scrollLeft + clientWidth) >= scrollWidth;
+        // logic: if (current_pos + view_width) >= (total_width - small_buffer)
+        const isAtEnd = (scrollLeft + clientWidth) >= (scrollWidth - 5);
 
-        // SCROLL UP EXIT: If scrolling UP and we are at the start -> Let browser scroll vertically to Hero
+        // 3. EXIT STRATEGIES
+        // If scrolling UP at the start -> Allow vertical scroll to Hero
         if (evt.deltaY < 0 && isAtStart) {
           return; 
         }
 
-        // SCROLL DOWN EXIT: If scrolling DOWN and we are at the end -> Let browser scroll vertically to Footer
+        // If scrolling DOWN at the end -> Allow vertical scroll to Footer
         if (evt.deltaY > 0 && isAtEnd) {
           return;
         }
 
-        // Otherwise, hijack vertical scroll for horizontal movement
+        // 4. Horizontal Scroll Execution
         evt.preventDefault();
-        
-        // Multiplied by 2 for faster/smoother horizontal scrolling
-        container.scrollLeft += evt.deltaY * 2; 
+        // Multiply by 2.5 for a "heavier" solid feel
+        container.scrollLeft += evt.deltaY * 2.5; 
       }
     };
 
-    // Attach passive: false to allow preventDefault()
+    // Passive: false is required to prevent default window scrolling
     window.addEventListener('wheel', handleWheel, { passive: false });
     
     return () => window.removeEventListener('wheel', handleWheel);
   }, []);
 
-  // 2. INTERSECTION OBSERVER (Header Logic)
+  // 2. HEADER UPDATE LOGIC
   useEffect(() => {
     const container = scrollContainerRef.current;
     
@@ -72,7 +70,7 @@ const App = () => {
       },
       {
         root: container, 
-        threshold: 0.3, // Trigger when 30% of a category is visible
+        threshold: 0.4, // Increased threshold for "solid" section detection
       }
     );
 
@@ -88,7 +86,6 @@ const App = () => {
       
       <section id="events-section" className="events-container" ref={sectionRef}>
         
-        {/* Sticky Header */}
         <div className={`sticky-header ${currentCategory.bgClass}`}>
           <div className="header-content container">
             <div className="header-left">
@@ -106,7 +103,6 @@ const App = () => {
         <div className="container">
           <div className="events-grid" ref={scrollContainerRef}>
             
-            {/* Render Categories as Groups */}
             {categories.map((category) => {
               const categoryEvents = events.filter(e => e.category === category.id);
 
@@ -116,7 +112,6 @@ const App = () => {
                   className="category-group" 
                   data-category-id={category.id}
                 >
-                  {/* Intro Card */}
                   <div className={`category-intro-card ${category.bgClass}`}>
                     <div className="intro-content">
                       <i className={`fas ${category.icon} category-icon`}></i>
@@ -125,7 +120,6 @@ const App = () => {
                     </div>
                   </div>
 
-                  {/* Events */}
                   {categoryEvents.map(event => (
                     <EventCard key={event.id} event={event} />
                   ))}
@@ -139,7 +133,6 @@ const App = () => {
       </section>
 
       <Footer />
-      
     </div>
   );
 };

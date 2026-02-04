@@ -38,7 +38,7 @@ body {
   font-family: 'Inter', sans-serif;
   color: var(--text-dark);
   line-height: 1.6;
-  overflow-x: hidden; /* FIX: Prevents page-wide horizontal scroll issues */
+  overflow-x: hidden;
   background: var(--bg-color);
   background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
@@ -330,8 +330,10 @@ body {
   gap: 60px;
   padding: 20px 5px 40px;
   
-  /* FIX: Ensure instant scrolling response from JS logic */
-  scroll-behavior: auto; 
+  /* --- SOLID SCROLL FIXES --- */
+  scroll-behavior: auto;         /* Allow instant JS updates */
+  scroll-snap-type: x mandatory; /* Enforce locking to items */
+  overscroll-behavior-x: none;   /* PREVENT BOUNCE (Solid Boundaries) */
   
   scrollbar-width: none;
 }
@@ -345,6 +347,10 @@ body {
   gap: 30px;
   flex: 0 0 auto;
   align-items: stretch;
+  
+  /* Snap the entire group start */
+  scroll-snap-align: start;
+  scroll-snap-stop: always; /* Force stop here, no skipping */
 }
 
 .category-intro-card {
@@ -358,6 +364,9 @@ body {
   padding: 30px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
   transition: transform 0.3s ease;
+  
+  /* Snap the intro card itself */
+  scroll-snap-align: start;
 }
 .category-intro-card:hover { transform: translateY(-5px); }
 
@@ -377,6 +386,9 @@ body {
   min-width: 320px;
   width: 320px;
   flex: 0 0 auto;
+  
+  /* Snap individual cards for precision */
+  scroll-snap-align: start;
 }
 .event-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
 
