@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { categories } from '../data/eventsData';
 
-const Navbar = ({ activeTab, setActiveTab }) => {
-  const [scrolled, setScrolled] = useState(false);
+interface NavbarProps {
+  activeTab: string;
+  setActiveTab: (id: string) => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
+  const [scrolled, setScrolled] = useState<boolean>(false);
 
   useEffect(() => {
     const handleScroll = () => {

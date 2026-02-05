@@ -1,11 +1,13 @@
-export const categories = [
+import { Category, Event } from '../types';
+
+export const categories: Category[] = [
   { id: 'communication', label: 'Communication', icon: 'fa-microphone', bgClass: 'comm-bg', description: 'Speak • Persuade • Express', coordinator: 'Ms. P. Priya Dharshini' },
   { id: 'business', label: 'Business', icon: 'fa-briefcase', bgClass: 'business-bg', description: 'Plan • Create • Coordinate', coordinator: 'Mrs. K. Bhargavi' },
   { id: 'technical', label: 'Technical', icon: 'fa-code', bgClass: 'tech-bg', description: 'Code • Debug • Design', coordinator: 'Mr. L. Dharma Prakash & Ms. Anupama M Kumar' },
   { id: 'tamil', label: 'Tamil', icon: 'fa-feather', bgClass: 'tamil-bg', description: 'தமிழ் மொழியும் கலாச்சாரமும்', coordinator: 'Mr. Sridhar' },
 ];
 
-export const events = [
+export const events: Event[] = [
   // Communication
   {
     id: 1,

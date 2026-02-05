@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from 'react';
 
-const Hero = () => {
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-  const [typingText, setTypingText] = useState('');
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [loopNum, setLoopNum] = useState(0);
-  const [typingSpeed, setTypingSpeed] = useState(150);
+interface TimeLeft {
+  days?: number;
+  hours?: number;
+  minutes?: number;
+  seconds?: number;
+}
+
+const Hero: React.FC = () => {
+  const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft());
+  const [typingText, setTypingText] = useState<string>('');
+  const [isDeleting, setIsDeleting] = useState<boolean>(false);
+  const [loopNum, setLoopNum] = useState<number>(0);
+  const [typingSpeed, setTypingSpeed] = useState<number>(150);
 
   const dataText = ["Showcase Your Skills", "Win Exciting Prizes", "Connect with Peers", "Master New Tech"];
 
@@ -16,9 +23,9 @@ const Hero = () => {
     return () => clearInterval(timer);
   }, []);
 
-  function calculateTimeLeft() {
+  function calculateTimeLeft(): TimeLeft {
     const difference = +new Date("2026-02-11T09:00:00+05:30") - +new Date();
-    let timeLeft = {};
+    let timeLeft: TimeLeft = {};
     if (difference > 0) {
       timeLeft = {
         days: Math.floor(difference / (1000 * 60 * 60 * 24)),

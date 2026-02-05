@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
+import { Event } from '../types';
 
-const EventCard = ({ event }) => {
-  const [showDetails, setShowDetails] = useState(false);
+interface EventCardProps {
+  event: Event;
+}
+
+const EventCard: React.FC<EventCardProps> = ({ event }) => {
+  const [showDetails, setShowDetails] = useState<boolean>(false);
   
   // State to handle image loading errors
-  const [imgSrc, setImgSrc] = useState(event.image);
+  const [imgSrc, setImgSrc] = useState<string>(event.image);
 
   const handleImageError = () => {
     // Fallback image if the original fails (Abstract tech background)

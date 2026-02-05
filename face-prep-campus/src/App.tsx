@@ -3,19 +3,21 @@ import Hero from './components/Hero';
 import EventCard from './components/EventCard';
 import Footer from './components/Footer';
 import { categories, events } from './data/eventsData';
+import { Category } from './types';
 import './index.css'; 
 
-const App = () => {
-  const scrollContainerRef = useRef(null);
-  const sectionRef = useRef(null);
-  const [currentCategory, setCurrentCategory] = useState(categories[0]);
+const App: React.FC = () => {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const [currentCategory, setCurrentCategory] = useState<Category>(categories[0]);
 
   // 1. GLOBAL SCROLL LOGIC
   useEffect(() => {
     const container = scrollContainerRef.current;
     const section = sectionRef.current;
 
-    const handleWheel = (evt) => {
+    const handleWheel = (evt: WheelEvent) => {
+      if (!section) return;
       // 1. Check if Events Section is in view (snapped)
       const rect = section.getBoundingClientRect();
       const isSectionActive = rect.top >= -50 && rect.top <= 50;
@@ -49,8 +51,6 @@ const App = () => {
 
   // 2. HEADER UPDATE LOGIC (FIXED)
   useEffect(() => {
-    const container = scrollContainerRef.current;
-    
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
